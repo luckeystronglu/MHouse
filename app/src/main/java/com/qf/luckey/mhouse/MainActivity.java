@@ -19,7 +19,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void init() {
         radioGroup = findViewByIds(R.id.rg_tab_bottom);//找到RadioGroup控件
         radioGroup.setOnCheckedChangeListener(this);//设置点击监听
-        radioGroup.getChildAt(1).performClick();//模拟点击rg第一个rb
+        radioGroup.getChildAt(0).performClick();//模拟点击rg第一个rb
     }
 
     @Override
