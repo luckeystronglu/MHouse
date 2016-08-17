@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+    <!--新闻列表标题-->
+    <TextView
+        android:id="@+id/tv_newstitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textSize="16sp"
+        />
+    <!--新闻列表图片-->
+    <ImageView
+        android:id="@+id/new_imgs"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        />
+
+
+    <!--评论-->
+    <TextView
+        android:id="@+id/tv_newspincount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/tv_newspin"
+        android:layout_alignTop="@+id/tv_newspin"
+        android:textSize="14sp"
+        />
+    <TextView
+
+        android:id="@+id/tv_newspin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tv_newstitle"
+        android:layout_below="@+id/new_imgs"
+        android:layout_marginRight="5dp"
+        android:text="评"
+
+        />
+
+</RelativeLayout>

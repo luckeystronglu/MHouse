@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <!--新闻列表图片-->
+    <ImageView
+        android:id="@+id/new_img"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        
+        />
+    <!--新闻列表标题-->
+    <TextView
+        android:id="@+id/tv_newstitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/new_img"
+        android:layout_marginLeft="5dp"
+        android:textSize="16sp"
+        />
+    <!--新闻简介-->
+    <TextView
+        android:id="@+id/tv_newscontent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_newstitle"
+        android:layout_below="@+id/tv_newstitle"
+        android:layout_toRightOf="@+id/new_img"
+        android:layout_marginTop="5dp"
+        android:textSize="14sp"
+        android:textColor="#919194"
+        android:maxLines="3"
+        />
+
+    <!--评论-->
+    <TextView
+        android:id="@+id/tv_newspincount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/tv_newspin"
+        android:layout_alignTop="@+id/tv_newspin"
+        android:textSize="14sp"
+        />
+    <TextView
+
+        android:id="@+id/tv_newspin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tv_newstitle"
+        android:layout_alignBottom="@+id/new_img"
+        android:layout_marginRight="5dp"
+        android:text="评"
+
+        />
+
+</RelativeLayout>

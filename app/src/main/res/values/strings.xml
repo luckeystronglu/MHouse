@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MHouse</string>
+    <string name="defaultcity">北京</string>
+    <string name="defaultletter">A</string>
+    <string name="choicecity_tv">选择城市</string>
+    <string name="edit_city">中文/拼音/首字母</string>
+
+</resources>

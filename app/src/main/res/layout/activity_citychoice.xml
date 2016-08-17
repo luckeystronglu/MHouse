@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="@color/themeBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:text="@string/choicecity_tv"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/choicecity_textsize"
+            android:gravity="center"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/edit_choicecity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_city"
+            android:layout_margin="@dimen/edit_margin"
+            android:drawableLeft="@drawable/btn_search_img_pressed"
+            android:background="@drawable/edittext_choicecity"
+            />
+        <!-- 城市列表 -->
+        <ListView
+            android:id="@+id/lv_city"
+            android:layout_below="@+id/edit_choicecity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+        <!-- 侧边控件 -->
+        <com.qfkf.widget.SlideView
+            android:id="@+id/slideview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/slideview_paddding"
+
+            />
+        <com.qfkf.widget.LibelView
+            android:id="@+id/labelview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

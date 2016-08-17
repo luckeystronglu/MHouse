@@ -1,0 +1,15 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="defaultcity_textsize">16sp</dimen>
+    <dimen name="def_textsize_marleft">10dp</dimen>
+    <dimen name="choicecity_textsize">20dp</dimen>
+    <dimen name="edit_margin">10dp</dimen>
+    <dimen name="slideview_paddding">10dp</dimen>
+    <dimen name="citylist">16sp</dimen>
+    <dimen name="lettersize">14sp</dimen>
+    <dimen name="citylist_margin">10dp</dimen>
+    <dimen name="cityletter_margin">5dp</dimen>
+
+</resources>
