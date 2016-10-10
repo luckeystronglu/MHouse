@@ -1,82 +1,59 @@
-package com.qfkf.util;
-
-import android.os.Handler;
+package com.qf.luckey.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
- * 网络请求工具类
- * Created by Ken on 2016/7/25.
+ * Created by Ken on 2016/9/19.14:35
  */
 public class HttpUtil {
 
-    private static ExecutorService executor = Executors.newFixedThreadPool(5);
-    private static Handler handler = new Handler();
-
-    private static byte[] getBytesByUrl(String url){
-        InputStream inputStream = null;
+    /**
+     * 下载资源
+     * @return
+     */
+    public static byte[] requestURL(String urlStr){
+        InputStream in = null;
+        ByteArrayOutputStream out = null;
         try {
-            URL url1 = new URL(url);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url1.openConnection();
-            httpURLConnection.setRequestMethod("GET");
-            httpURLConnection.setReadTimeout(5000);
-            httpURLConnection.setConnectTimeout(5000);
-            httpURLConnection.setDoInput(true);
+            URL url = new URL(urlStr);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setReadTimeout(3000);
 
-            inputStream = httpURLConnection.getInputStream();
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            byte[] bytes = new byte[1024 * 2];
-            int length = 0;
-            while((length = inputStream.read(bytes)) != -1){
-                outputStream.write(bytes, 0, length);
+            conn.connect();
+
+            if(conn.getResponseCode() == 200){
+                in = conn.getInputStream();
+                out = new ByteArrayOutputStream();
+
+                byte[] buffer = new byte[1024 * 8];
+                int len;
+                while((len = in.read(buffer)) != -1){
+                    out.write(buffer, 0, len);
+                }
+
+                //得到下载好的json字符串
+                return out.toByteArray();
             }
-
-            return outputStream.toByteArray();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(inputStream != null){
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            try {
+                if(in != null){
+                    in.close();
                 }
+
+                if(out != null){
+                    out.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-
         return null;
-    }
-
-    /**
-     * 下载json的方法
-     * @param url
-     * @param downLoadListener
-     * @return
-     */
-    public static String downJson(final String url, final DownLoadListener downLoadListener){
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                byte[] bytes = getBytesByUrl(url);
-                final String json = new String(bytes);
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        downLoadListener.downSucc(url,json);
-                    }
-                });
-            }
-        });
-        return null;
-    }
-
-    public interface DownLoadListener{
-        void downSucc(String url,String json);
     }
 }

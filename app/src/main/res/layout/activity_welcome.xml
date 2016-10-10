@@ -3,6 +3,12 @@
               android:background="@color/themeBlue"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:text="当前城市"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
     <ImageView
         android:id="@+id/welcom_img"
         android:src="@drawable/icon_logo"

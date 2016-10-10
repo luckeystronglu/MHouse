@@ -11,9 +11,9 @@ import com.qf.luckey.entity.NewsEntity;
 import com.qf.luckey.mhouse.CityChoiceActivity;
 import com.qf.luckey.mhouse.R;
 import com.qf.luckey.utils.Contants;
+import com.qf.luckey.utils.DownUtil;
 import com.qf.luckey.utils.JsonUitl;
 import com.qfkf.base.BaseFragment;
-import com.qfkf.util.HttpUtil;
 import com.qfkf.util.ShareUtil;
 
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
  * 首页展示的Fragment
  * Created by Administrator on 2016/8/6.
  */
-public class HomeFragment extends BaseFragment implements View.OnClickListener, HttpUtil.DownLoadListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener, DownUtil.OnDownListener {
 
     private TextView tv_selectcity;
 
@@ -74,7 +74,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     protected void loadDatas() {
         //加载相应的城市数据
         newsUrl = String.format(Contants.LIST_NEWS,newsCount,0,0,cityid);
-        HttpUtil.downJson(newsUrl,this);
+        new DownUtil().setOnDownListener(this).downJSON(newsUrl);
 
     }
 
@@ -101,14 +101,31 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         }
     }
 
+//    @Override
+//    public void downSucc(String url, String json) {
+//        if (url.equals(newsUrl) && json != null){
+//            //说明请求的是ListView新闻列表
+//            datalist = JsonUitl.getNewsByJson(json);
+//            if (datalist != null){
+//                newsAdapter.setDatas(datalist);
+//            }
+//        }
+//    }
+
     @Override
-    public void downSucc(String url, String json) {
-        if (url.equals(newsUrl) && json != null){
-            //说明请求的是ListView新闻列表
-            datalist = JsonUitl.getNewsByJson(json);
-            if (datalist != null){
-                newsAdapter.setDatas(datalist);
-            }
+    public Object paresJson(String json) {
+        if (json != null) {
+            return JsonUitl.getNewsByJson(json);
         }
+        return null;
+    }
+
+    @Override
+    public void downSucc(Object object) {
+        if (object != null) {
+            datalist = (List<NewsEntity>) object;
+            newsAdapter.setDatas(datalist);
+        }
+
     }
 }

@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.qf.luckey.mhouse">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:name="com.qfkf.context.AppContext"
         android:allowBackup="true"
@@ -17,10 +27,23 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!--注册主页-->
+        <!--注册主页 -->
         <activity android:name=".MainActivity"/>
         <!--注册城市选择页面-->
         <activity android:name=".CityChoiceActivity"/>
+
+
+        <activity android:name=".MyMapLocation"/>
+        <!-- 定位服务 -->
+        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
+        </service>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="tpp1NRyWEFVk9gLB6G2sVp6H00VNmqNf"/>
+
+        <meta-data android:name="AA_DB_NAME" android:value="cy.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
     </application>
 
 </manifest>

@@ -5,9 +5,13 @@ import java.io.Serializable;
 /**
  * 城市实体类
  * Created by Administrator on 2016/8/7.
+
  */
+
 public class CityEntity implements Serializable {
+
     private int cityid;
+
     private String cityname;
     private int type = 1;//默认当前选择城市
 
@@ -43,5 +47,14 @@ public class CityEntity implements Serializable {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "CityEntity{" +
+                "cityid=" + cityid +
+                ", cityname='" + cityname + '\'' +
+                ", type=" + type +
+                '}';
     }
 }
