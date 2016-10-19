@@ -25,6 +25,9 @@ public class CityDbEntity extends Model {
         this.ctype = ctype;
     }
 
+    public CityDbEntity() {
+    }
+
     public int getCid() {
         return cid;
     }
@@ -51,10 +54,8 @@ public class CityDbEntity extends Model {
 
     @Override
     public String toString() {
-        return "CityDbEntity{" +
-                "cid=" + cid +
-                ", cname='" + cname + '\'' +
-                ", ctype=" + ctype +
+        return "{" +
+                "cname='" + cname + '\'' +
                 '}';
     }
 }

@@ -51,10 +51,8 @@ public class CityEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "CityEntity{" +
-                "cityid=" + cityid +
-                ", cityname='" + cityname + '\'' +
-                ", type=" + type +
+        return "{" +
+                "cityname='" + cityname + '\'' +
                 '}';
     }
 }
